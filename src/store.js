@@ -2,10 +2,12 @@ import thunk from 'redux-thunk'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import users from './reducers/users';
 import currentUser from './reducers/currentUser';
+import loginForm from './reducers/loginForm';
 
 const reducer = combineReducers({
     users,
-    currentUser
+    currentUser,
+    loginForm
     // users: userReducer (different syntax)
   })
   
