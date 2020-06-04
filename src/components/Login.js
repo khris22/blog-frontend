@@ -1,8 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updateLoginForm } from "../actions/loginForm.js"
-import { login } from "../actions/currentUser.js"
+import { updateLoginForm } from "../actions/loginForm"
+import { login } from "../actions/currrentUser"
 
+// same thing > personal preference
+// (props) > props.username 
+// destructure ({})
 const Login = ({ loginFormData, updateLoginForm, login, history }) => {
 
     const handleInputChange = event => {
@@ -16,18 +19,19 @@ const Login = ({ loginFormData, updateLoginForm, login, history }) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        login(loginFormData, history)
+        login(loginFormData)
       }
 
     return (
        <form onSubmit={handleSubmit}>
-            <input placeholder="username" value={loginFormData.username} name="username" type="text" onChange={handleInputChange} />
-            <input placeholder="password" value={loginFormData.password} name="password" type="text" onChange={handleInputChange} />
+            <input placeholder="username" value={loginFormData.username} name="username" type="text" onChange={handleInputChange} required/>
+            <input placeholder="password" value={loginFormData.password} name="password" type="text" onChange={handleInputChange} required />
             <input type="submit" value="Log In"/>
        </form>
     )
 }
 
+// read only, gives us access to the chunk of state to the store and use them as props
 const mapStateToProps = state => {
     return {
       loginFormData: state.loginForm
@@ -35,4 +39,4 @@ const mapStateToProps = state => {
   }
 
 // export default Login
-export default connect(mapStateToProps, { updateLoginForm, login } )(Login)
+export default connect(mapStateToProps, { updateLoginForm, login} )(Login)

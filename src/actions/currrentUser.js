@@ -8,25 +8,26 @@ export const setCurrentUser = user => {
   }
 
   export const login = (credentials, history) => {
+      console.log(credentials)
     return dispatch => {
       return fetch("http://localhost:3001/api/v1/login", {
-        credentials: "include",
+        // credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(credentials)
       })
-        .then(r => r.json())
-        .then(response => {
-          if (response.error) {
-            alert(response.error)
-          } else {
-            dispatch(setCurrentUser(response.data))
-            history.push('/')
-          }
-        })
-        .catch(console.log)
+        // .then(r => r.json())
+        // .then(response => {
+        //   if (response.error) {
+        //     alert(response.error)
+        //   } else {
+        //     dispatch(setCurrentUser(response.data))
+        //     history.push('/')
+        //   }
+        // })
+        // .catch(console.log)
     }
   }
   
