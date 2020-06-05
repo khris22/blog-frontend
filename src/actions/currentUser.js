@@ -1,5 +1,5 @@
 
-
+// clearing out the user on frontend
 export const setCurrentUser = user => {
     return {
       type: "SET_CURRENT_USER",
@@ -54,3 +54,20 @@ export const login = (credentials) => {
     }
   }
   
+  export const clearCurrentUser = () => {
+    return {
+      type: "CLEAR_CURRENT_USER"
+    }
+  }
+
+  export const logout = () => {
+    return dispatch => {
+      // optimistic approach
+      dispatch(clearCurrentUser())
+      // dispatch(clearTrips())
+      return fetch('http://localhost:3001/api/v1/logout', {
+        credentials: "include",
+        method: "DELETE"
+      })
+    }
+  }
