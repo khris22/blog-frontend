@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateLoginForm } from "../actions/loginForm"
-import { login } from "../actions/currrentUser"
+import { login } from "../actions/currentUser"
 
 // same thing > personal preference
 // (props) > props.username 
