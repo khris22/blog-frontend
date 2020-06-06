@@ -4,3 +4,10 @@ export const updateLoginForm = (formData) => {
         formData
       }
   }
+
+// clear the login form after a logout
+export const resetLoginForm = () => {
+    return {
+      type: "RESET_LOGIN_FORM"
+    }
+  }
