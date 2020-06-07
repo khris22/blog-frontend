@@ -3,11 +3,13 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import users from './reducers/users';
 import currentUser from './reducers/currentUser';
 import loginForm from './reducers/loginForm';
+import entries from './reducers/entries'
 
 const reducer = combineReducers({
     users,
     currentUser,
-    loginForm
+    loginForm,
+    entries
     // users: userReducer (different syntax)
   })
   
