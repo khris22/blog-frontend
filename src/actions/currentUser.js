@@ -1,4 +1,5 @@
-import { resetLoginForm } from "./loginForm.js"
+import { resetLoginForm } from "./loginForm"
+import { getEntries } from './entries'
 
 // clearing out the user on frontend
 export const setCurrentUser = user => {
@@ -26,6 +27,7 @@ export const login = (credentials) => {
           } else {
             // dispatch comes from redux
             dispatch(setCurrentUser(response.data))
+            dispatch(getEntries())
             dispatch(resetLoginForm())
             // history.push('/')
           }
@@ -49,7 +51,7 @@ export const login = (credentials) => {
             alert(response.error)
           } else {
             dispatch(setCurrentUser(response.data))
-            // dispatch(getMyTrips())
+            dispatch(getEntries())
           }
         })
         .catch(console.log)
