@@ -11,6 +11,8 @@ const Entries = (props) => {
     )
 }
 
+// mapStateToProps(Redux) - to access State
+// pieces of state to make available as props
 const mapStateToProps = (state) => {
     return {
         entries: state.entries
