@@ -8,6 +8,9 @@ import store from './store.js'
 // import thunk from 'redux-thunk'
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+// import { BrowserRouter as Route } from 'react-router-dom';
+
+
 // usersReducer: call it whatever you want
 // import users from './reducers/users';
 // import userReducer from './reducers/users'
