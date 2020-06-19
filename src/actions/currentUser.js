@@ -1,5 +1,6 @@
 import { resetLoginForm } from "./loginForm"
 import { getEntries } from './entries'
+import { resetSignupForm } from "./signupForm.js"
 
 // clearing out the user on frontend
 export const setCurrentUser = user => {
@@ -74,4 +75,33 @@ export const login = (credentials) => {
         method: "DELETE"
       })
     }
+  }
+
+  export const signup = (credentials) => {
+    console.log('SIGNUP')
+    // return dispatch => {
+    //   const userInfo = {
+    //     user: credentials
+    //   }
+    //   return fetch("http://localhost:3001/api/v1/signup", {
+    //     credentials: "include",
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(userInfo)
+    //   })
+    //     .then(r => r.json())
+    //     .then(response => {
+    //       if (response.error) {
+    //         alert(response.error)
+    //       } else {
+    //         dispatch(setCurrentUser(response.data))
+    //         // dispatch(getMyTrips())
+    //         // dispatch(resetSignupForm())
+    //         // history.push('/')
+    //       }
+    //     })
+    //     .catch(console.log)
+    // }
   }
