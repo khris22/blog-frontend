@@ -4,11 +4,13 @@ import users from './reducers/users';
 import currentUser from './reducers/currentUser';
 import loginForm from './reducers/loginForm';
 import entries from './reducers/entries'
+import signupForm from './reducers/signupForm'
 
 const reducer = combineReducers({
     users,
     currentUser,
     loginForm,
+    signupForm,
     entries
     // users: userReducer (different syntax)
   })
