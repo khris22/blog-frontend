@@ -10,7 +10,7 @@ export const setCurrentUser = user => {
     }
   }
 
-export const login = (credentials) => {
+export const login = (credentials, history) => {
     // console.log(credentials)
     return dispatch => {
       return fetch("http://localhost:3001/api/v1/login", {
@@ -30,7 +30,8 @@ export const login = (credentials) => {
             dispatch(setCurrentUser(response.data))
             dispatch(getEntries())
             dispatch(resetLoginForm())
-            // history.push('/')
+            history.push('/')
+            // will bring you back to Home route
           }
         })
         .catch(console.log)
@@ -77,7 +78,7 @@ export const login = (credentials) => {
     }
   }
 
-  export const signup = (credentials) => {
+  export const signup = (credentials, history) => {
     console.log('SIGNUP')
     return dispatch => {
       const userInfo = {
@@ -100,7 +101,7 @@ export const login = (credentials) => {
             dispatch(setCurrentUser(response.data))
             dispatch(getEntries())
             dispatch(resetSignupForm())
-            // history.push('/')
+            history.push('/')
           }
         })
         .catch(console.log)
