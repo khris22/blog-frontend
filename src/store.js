@@ -12,7 +12,7 @@ const reducer = combineReducers({
     loginForm,
     signupForm,
     entries
-    // users: userReducer (different syntax)
+    // users: userReducer (different syntax) - renaming the userReducer to users -- has a different import
   })
   
   const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

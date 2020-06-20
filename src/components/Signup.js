@@ -21,9 +21,9 @@ const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
 
     return (
        <form onSubmit={handleSubmit}>
-        <input placeholder="username" value={signupFormData.username} name="username" type="text" onChange={handleUserInfoInputChange} />
-        <input placeholder="password" value={signupFormData.password} name="password" type="text" onChange={handleUserInfoInputChange} />
-        <input placeholder="email" value={signupFormData.email} name="email" type="text" onChange={handleUserInfoInputChange} />
+        <input placeholder="username" value={signupFormData.username} name="username" type="text" onChange={handleUserInfoInputChange} required />
+        <input placeholder="password" value={signupFormData.password} name="password" type="text" onChange={handleUserInfoInputChange} required />
+        <input placeholder="email" value={signupFormData.email} name="email" type="text" onChange={handleUserInfoInputChange} required />
 
         <input type="submit" value="Sign Up"/>
        </form>
@@ -38,3 +38,16 @@ const mapStateToProps = state => {
 
 
 export default connect(mapStateToProps, { updateSignupForm, signup} )(Signup)
+
+// Handling nested forms
+// const handleHomeTownInfoInputChange = event => {
+//     const { name, value } = event.target
+//     const updatedFormInfo = {
+//       ...signupFormData,
+//       hometown: {
+//         ...signupFormData.hometown,
+//         [name]: value
+//       }
+//     }
+//     updateSignupForm(updatedFormInfo)
+//   }
