@@ -13,6 +13,7 @@ import Logout from './components/Logout';
 import Signup from './components/Signup';
 import Home from './components/Home'
 import Entries from './components/Entries'
+import NewEntry from './components/NewEntry'
 
 class App extends React.Component {
 
@@ -38,6 +39,7 @@ class App extends React.Component {
 
     <Route exact path='/login' component={Login}/>
     <Route exact path='/entries' component={Entries}/>
+    <Route exact path='/entries/new' component={NewEntry}/>
 
     <Route exact path='/' render={(props) => loggedIn ? <Entries {...props}/> : <Home {...props}/>} />
     <Route exact path='/logout' component={Logout}/>
