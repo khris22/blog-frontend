@@ -5,12 +5,14 @@ import React from 'react';
 import './App.css';
 import { connect } from 'react-redux'
 import { getCurrentUser } from "./actions/currentUser";
-// import NavBar from './components/NavBar'
+import NavBar from './components/NavBar'
 // import MainContainer from './components/MainContainer';
-import { Route } from 'react-router-dom'
+import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './components/Login'
 import Logout from './components/Logout';
-import Signup from './components/Signup'
+import Signup from './components/Signup';
+import Home from './components/Home'
+import Entries from './components/Entries'
 
 class App extends React.Component {
 
@@ -19,35 +21,50 @@ class App extends React.Component {
   }
 
   render(){
+
+  const { loggedIn, entries } = this.props
+
   return (
     // this.props.currentUser ? <Logout/> : <Login/>
-    <div>
     
-    <Route exact path='/login' component={Login}/>
+    
+    <div>
+    {/* { loggedIn ? <NavBar entries={this.props.entries}/> : <Home/> } */}
+
+    <Logout/>
+    <Switch>
     <Route exact path='/signup' component={Signup}/>
+    {/* <Route exact path='/signup' render={({history})=><Signup history={history}/>}/> */}
+
+    <Route exact path='/login' component={Login}/>
+    <Route exact path='/entries' component={Entries}/>
+
+    <Route exact path='/' render={(props) => loggedIn ? <Entries {...props}/> : <Home {...props}/>} />
     <Route exact path='/logout' component={Logout}/>
     {/* <NavBar/> */}
     {/* <MainContainer/> */}
 
- 
+    </Switch>
     </div>
   );
 }
 }
 
-// const mapStateToProps = state => {
-//   return ({
-//     loggedIn: !!state.currentUser
-//     // trips: state.myTrips
-//   })
-// }
+const mapStateToProps = state => {
+  return ({
+    loggedIn: !!state.currentUser,
+    // Boolean state!! in JS
 
-const mapStateToProps = ({currentUser}) => {
-  return {
-    currentUser
-  }
+    entries: state.entries
+  })
 }
 
-export default connect(mapStateToProps, { getCurrentUser })(App);
+// const mapStateToProps = ({currentUser}) => {
+//   return {
+//     currentUser
+//   }
+// }
+
+export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
 
 // export default App;
