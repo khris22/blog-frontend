@@ -19,7 +19,7 @@ const NewEntry = ({ formData, updateEntryForm, userId, entry}) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-
+        
       }
 
     return (
