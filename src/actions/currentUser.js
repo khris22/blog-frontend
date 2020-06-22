@@ -1,5 +1,5 @@
 import { resetLoginForm } from "./loginForm"
-import { getEntries } from './entries'
+import { getEntries, clearEntries } from './entries'
 import { resetSignupForm } from "./signupForm.js"
 
 // clearing out the user on frontend
@@ -68,9 +68,9 @@ export const login = (credentials, history) => {
 
   export const logout = () => {
     return dispatch => {
-      // optimistic approach
+      // optimistic approach - does not need response
       dispatch(clearCurrentUser())
-      // dispatch(clearTrips())
+      dispatch(clearEntries())
       return fetch('http://localhost:3001/api/v1/logout', {
         credentials: "include",
         method: "DELETE"

@@ -1,3 +1,4 @@
+// sync
 export const setEntries = entries => {
     return {
       type: "SET_ENTRIES",
@@ -5,7 +6,20 @@ export const setEntries = entries => {
     }
   }
 
+export const clearEntries = () => {
+    return {
+      type: "CLEAR_ENTRIES"
+    }
+  }
 
+export const addEntry = entry => {
+    return {
+      type: "ADD_ENTRY",
+      entry
+    }
+  }
+
+// async
   export const getEntries = () => {
     return dispatch => {
       return fetch("http://localhost:3001/api/v1/entries", {
