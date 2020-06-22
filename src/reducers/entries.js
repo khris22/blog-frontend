@@ -8,6 +8,7 @@ export default (state = initialState, action) => {
       return initialState
     case "ADD_ENTRY":
       return state.concat(action.entry)
+      // concat() works to update state is that .concat() creates a new array, leaving the old array intact, and then returns the changed array
     default:
       return state
   }

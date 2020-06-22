@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { updateEntryForm } from "../actions/entryForm"
+import { updateEntryForm } from '../actions/entryForm'
+import { createEntry } from '../actions/entries'
 
 
-const NewEntry = ({ formData, updateEntryForm, userId, entry}) => {
+const NewEntry = ({ formData, updateEntryForm, createEntry, userId, entry, history}) => {
 
     const { title, notes } = formData
 
@@ -19,7 +20,14 @@ const NewEntry = ({ formData, updateEntryForm, userId, entry}) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        
+        // formData will be EntryData in the action creator to be dispatched
+        createEntry(formData, history)
+
+        // manually put the userId
+        // createEntry({
+        //     ...formData,
+        //     userId
+        // }, history)
       }
 
     return (
@@ -39,15 +47,16 @@ const NewEntry = ({ formData, updateEntryForm, userId, entry}) => {
 // }
 
 const mapStateToProps = state => {
-    // const userId = state.currentUser ? state.currentUser.id : ""
+    // ternary for grabbing currentUser id during init
+    const userId = state.currentUser ? state.currentUser.id : ""
     return {
       formData: state.entryForm,
-    //   userId
+      userId
     }
   }
 
 
-export default connect(mapStateToProps, { updateEntryForm })(NewEntry)
+export default connect(mapStateToProps, { updateEntryForm, createEntry })(NewEntry)
 
 
 // t.string "title"
