@@ -14,6 +14,7 @@ import Signup from './components/Signup';
 import Home from './components/Home'
 import Entries from './components/Entries'
 import NewEntry from './components/NewEntry'
+import EntryCard from './components/EntryCard'
 
 class App extends React.Component {
 
@@ -23,7 +24,7 @@ class App extends React.Component {
 
   render(){
 
-  const { loggedIn } = this.props
+  const { loggedIn, entries } = this.props
 
   return (
     // this.props.currentUser ? <Logout/> : <Login/>
@@ -43,6 +44,15 @@ class App extends React.Component {
     <Route exact path='/entries/new' component={NewEntry}/>
     <Route exact path='/logout' component={Logout}/>
 
+    {/* Route for Show page */}
+    <Route exact path='/entries/:id' render={props => {
+              // I need to get ???
+              const entry = entries.find(entry => entry.id === props.match.params.id)
+              console.log(entry)
+              return <EntryCard entry={entry} {...props}/>
+            }
+          }/>
+
     {/* <Route exact path='/' render={(props) => loggedIn ? <Entries {...props}/> : <Home {...props}/>} /> */}
     {/* <NavBar/> */}
     {/* <MainContainer/> */}
@@ -56,7 +66,6 @@ const mapStateToProps = state => {
   return ({
     loggedIn: !!state.currentUser,
     // Boolean state!! in JS
-
     entries: state.entries
   })
 }
