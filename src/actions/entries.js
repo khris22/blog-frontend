@@ -77,3 +77,7 @@ export const addEntry = entry => {
   
     }
   }
+
+  export const updateEntry = (entryData, history) => {
+
+  }

@@ -13,6 +13,8 @@ const initialState = {
           return returnVal
       case "RESET_NEW_ENTRY_FORM":
         return initialState
+      case "SET_FORM_DATA_FOR_EDIT":
+        return action.entryFormData
       default:
         return state
     }
