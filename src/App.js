@@ -23,7 +23,7 @@ class App extends React.Component {
 
   render(){
 
-  const { loggedIn, entries } = this.props
+  const { loggedIn } = this.props
 
   return (
     // this.props.currentUser ? <Logout/> : <Login/>
@@ -32,7 +32,8 @@ class App extends React.Component {
     <div>
     {/* { loggedIn ? <NavBar entries={this.props.entries}/> : <Home/> } */}
 
-    <Logout/>
+    {/* <Logout/> */}
+    { loggedIn ? <NavBar/> : <Home/> }
     <Switch>
     <Route exact path='/signup' component={Signup}/>
     {/* <Route exact path='/signup' render={({history})=><Signup history={history}/>}/> */}
@@ -40,12 +41,11 @@ class App extends React.Component {
     <Route exact path='/login' component={Login}/>
     <Route exact path='/entries' component={Entries}/>
     <Route exact path='/entries/new' component={NewEntry}/>
-
-    <Route exact path='/' render={(props) => loggedIn ? <Entries {...props}/> : <Home {...props}/>} />
     <Route exact path='/logout' component={Logout}/>
+
+    {/* <Route exact path='/' render={(props) => loggedIn ? <Entries {...props}/> : <Home {...props}/>} /> */}
     {/* <NavBar/> */}
     {/* <MainContainer/> */}
-
     </Switch>
     </div>
   );
