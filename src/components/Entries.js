@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 
 
 const Entries = (props) => {
-    return (
+    const entryCard = props.entries.length > 0 ?
         props.entries.map(e => (<p key={e.id}>
             <Link to={`/entries/${e.id}`}>{e.attributes.title}</Link>
-        </p>))
-    )
+        </p>)) : null
+    return entryCard
 }
+
 
 // mapStateToProps(Redux) - to access State
 // pieces of state to make available as props
