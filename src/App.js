@@ -15,6 +15,8 @@ import Home from './components/Home'
 import Entries from './components/Entries'
 import NewEntry from './components/NewEntry'
 import EntryCard from './components/EntryCard'
+import EditEntryFormWrapper from './components/EditEntryFormWrapper'
+import NewEntryFormWrapper from './components/NewEntryFormWrapper'
 
 class App extends React.Component {
 
@@ -41,15 +43,24 @@ class App extends React.Component {
 
     <Route exact path='/login' component={Login}/>
     <Route exact path='/entries' component={Entries}/>
-    <Route exact path='/entries/new' component={NewEntry}/>
+    <Route exact path='/entries/new' component={NewEntryFormWrapper}/>
     <Route exact path='/logout' component={Logout}/>
 
     {/* Route for Show page */}
+    {/* use render to pass down props on route */}
     <Route exact path='/entries/:id' render={props => {
+        const entry = entries.find(entry => entry.id === props.match.params.id)
+        console.log(entry)
+        return <EntryCard entry={entry} {...props}/>
+            }
+        }/>
+
+    {/* Route for Edit */}
+    <Route exact path='/entries/:id/edit' render={props => {
               // I need to get ???
               const entry = entries.find(entry => entry.id === props.match.params.id)
-              console.log(entry)
-              return <EntryCard entry={entry} {...props}/>
+              // dispatch updateForm -> trip
+              return <EditEntryFormWrapper entry={entry} {...props}/>
             }
           }/>
 
