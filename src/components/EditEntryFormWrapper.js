@@ -5,14 +5,18 @@ import { connect } from 'react-redux'
 import NewEntry from './NewEntry';
 
 class EditEntryFormWrapper extends React.Component {
+    // before it mounts during initial render
   componentDidMount(){
     this.props.entry && this.props.setFormDataForEdit(this.props.entry)
   }
 
+    // for updating so the form will be filled when url gets typed manually
   componentDidUpdate(prevProps) {
     this.props.entry && !prevProps.entry && this.props.setFormDataForEdit(this.props.entry)
   }
 
+    // leaving a component
+    // for clearing forms  
   componentWillUnmount() {
     this.props.resetEntryForm()
   }
@@ -33,6 +37,7 @@ class EditEntryFormWrapper extends React.Component {
               <br/>
               
             </>
+            // editMode???
   }
 };
 

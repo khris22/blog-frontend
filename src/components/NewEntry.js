@@ -7,7 +7,7 @@ import { updateEntryForm } from '../actions/entryForm'
 
 
 // const NewEntry = ({ formData, updateEntryForm, createEntry, userId, entry, history, handleSubmit}) => {
-const NewEntry = ({ formData, updateEntryForm, userId, entry, history, handleSubmit}) => {
+const NewEntry = ({ formData, updateEntryForm, userId, entry, handleSubmit, editMode}) => {
 
 
     const { title, notes } = formData
@@ -43,7 +43,7 @@ const NewEntry = ({ formData, updateEntryForm, userId, entry, history, handleSub
         }}>
             <input placeholder="title" name="title" onChange={handleChange} value={title}/><br/><br/>
             <input placeholder="notes" name="notes" onChange={handleChange} value={notes}/><br/><br/>
-            <input type="submit" value="ADD ENTRY"/>
+            <input type="submit" value={editMode ? "Update Blog" : "Create Blog" }/>
 
         </form>
     )

@@ -22,6 +22,13 @@ export const addEntry = entry => {
     }
   }
 
+export const updateEntrySuccess = entry => {
+    return {
+      type: "UPDATE_ENTRY",
+      entry
+    }
+  }
+
 // async - need something to happen to update the store
 // return a function that returns a promise
   export const getEntries = () => {
@@ -79,5 +86,32 @@ export const addEntry = entry => {
   }
 
   export const updateEntry = (entryData, history) => {
-
+    return dispatch => {
+      const sendableEntryData = {
+        title: entryData.title,
+        notes: entryData.notes,
+        // not needed anymore:
+        // user_id: entryData.userId
+      }
+      return fetch(`http://localhost:3001/api/v1/entries/${entryData.entryId}`, {
+        credentials: "include",
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(sendableEntryData)
+      })
+        .then(r => r.json())
+        .then(resp => {
+          if (resp.error) {
+            alert(resp.error)
+          } else {
+            dispatch(updateEntrySuccess(resp.data))
+            // no need to do a dispatch on reset because of componentWillUnmount
+            history.push(`/entries/${resp.data.id}`)
+          }
+        })
+        .catch(console.log)
+  
+    }
   }
