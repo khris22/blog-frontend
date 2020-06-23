@@ -13,6 +13,11 @@ export default (state = initialState, action) => {
       // update state of one particular entry
       // map is nondestructive 
       return state.map(entry => entry.id === action.entry.id ? action.entry : entry)
+    case "DELETE_ENTRY":
+      // can also use slice~ but needs more data not just id
+      // filter returns an array
+        return state.filter(entry => entry.id === action.entryId ? false : true)
+
     default:
       return state
   }
