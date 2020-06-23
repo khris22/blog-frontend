@@ -13,7 +13,7 @@ import Logout from './components/Logout';
 import Signup from './components/Signup';
 import Home from './components/Home'
 import Entries from './components/Entries'
-import NewEntry from './components/NewEntry'
+// import NewEntry from './components/NewEntry'
 import EntryCard from './components/EntryCard'
 import EditEntryFormWrapper from './components/EditEntryFormWrapper'
 import NewEntryFormWrapper from './components/NewEntryFormWrapper'
@@ -50,7 +50,7 @@ class App extends React.Component {
     {/* use render to pass down props on route */}
     <Route exact path='/entries/:id' render={props => {
         const entry = entries.find(entry => entry.id === props.match.params.id)
-        console.log(entry)
+        // console.log(entry)
         return <EntryCard entry={entry} {...props}/>
             }
         }/>
