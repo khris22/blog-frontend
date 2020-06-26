@@ -18,6 +18,10 @@ import EntryCard from './components/EntryCard'
 import EditEntryFormWrapper from './components/EditEntryFormWrapper'
 import NewEntryFormWrapper from './components/NewEntryFormWrapper'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from 'react-bootstrap';
+
+
 class App extends React.Component {
 
   componentDidMount() {
@@ -31,8 +35,8 @@ class App extends React.Component {
   return (
     // this.props.currentUser ? <Logout/> : <Login/>
     
-    
     <div>
+    <Container>
     {/* { loggedIn ? <NavBar entries={this.props.entries}/> : <Home/> } */}
 
     {/* <Logout/> */}
@@ -68,6 +72,7 @@ class App extends React.Component {
     {/* <NavBar/> */}
     {/* <MainContainer/> */}
     </Switch>
+    </Container>
     </div>
   );
 }
