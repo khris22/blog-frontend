@@ -1,15 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Container, Button, Image } from 'react-bootstrap';
+import img1 from '../images/img1.jpg'
 
 
 const Home = () => {
     return (
-        <div>
+        <Container>
+        <center>
             <h2>WELCOME!!!</h2>
             <span>
-            <Link to="/signup">Sign Up</Link> or <Link to="/login">Log In</Link>
+            <Button variant="light"><Link to="/signup">Sign Up</Link></Button> or <Button variant="light"><Link to="/login">Log In</Link></Button>
             </span>
-        </div>
+            {/* must change opacity and should only be on the Home page */}
+            <Image src={img1} alt="Photo by Patrick Fore on Unsplash" fluid />
+        </center>
+        </Container>
     )
 }
 
