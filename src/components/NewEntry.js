@@ -68,5 +68,3 @@ const mapStateToProps = state => {
 export default connect(mapStateToProps, { updateEntryForm })(NewEntry)
 
 
-// t.string "title"
-// t.text "notes"
